@@ -81,3 +81,7 @@ The user's preferred process is:
 Use the current date and time for filenames. Example:
 
 `内容/2026-07-20_0935_脑子里很多想法，一开口就乱？试试这 4 个方法.md`
+
+## Publishing Notes
+
+When publishing or updating this skill repository, generate and include a `README.md` usage guide from `SKILL.md`. The README should explain what the skill does, when to use it, the expected input, the workflow, the output structure, and a concrete example prompt.
