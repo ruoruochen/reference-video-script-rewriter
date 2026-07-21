@@ -26,7 +26,7 @@ Default output target: 2-3 minute Chinese口播稿, unless the user requests ano
 
 2. Output the source script responsibly.
    - For long third-party transcripts, do not reproduce the entire source verbatim.
-   - Provide a structured paraphrase in source order.
+   - Always provide a structured source-script treatment in source order when a transcript or SRT was extracted. Include the reference's pacing, section sequence, hook logic, and key claims, even if the user asks to "directly rewrite".
    - Include only a few short key original lines that are useful for preserving the hook and title logic.
    - Make clear when the source is paraphrased rather than exact transcript.
 
@@ -48,7 +48,8 @@ Default output target: 2-3 minute Chinese口播稿, unless the user requests ano
    - Post title: use the reference's proven promise structure when appropriate.
    - Include a brief visual direction only if useful.
 
-6. Archive when requested.
+6. Archive full results by default.
+   - When producing a complete result with title/cover, rewritten script, reference link/source treatment, and user idea, create an archive file unless the user explicitly says not to save.
    - Create/use `内容/` in the current workspace.
    - Save as `YYYY-MM-DD_HHMM_帖子标题.md`.
    - Use this structure:

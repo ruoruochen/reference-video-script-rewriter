@@ -11,7 +11,7 @@ Use this skill when you want to:
 - Preserve a strong opening hook while rewriting the body.
 - Add your own angle, examples, framework, or observations.
 - Generate a 2-3 minute Chinese spoken script.
-- Produce title options, cover text, and an optional archive file.
+- Produce title options, cover text, and a default archive file for complete results.
 
 ## What It Does
 
@@ -29,7 +29,7 @@ The workflow:
 4. Uses the user's own viewpoint when supplied.
 5. Rewrites the script in conversational Chinese with short, speakable sentences.
 6. Outputs title and cover ideas plus the final script.
-7. Archives the result to `内容/` when requested.
+7. Archives complete results to `内容/` by default unless the user explicitly says not to save.
 
 ## Installation
 
@@ -60,6 +60,8 @@ Extract the original transcript if possible, keep the opening hook, rewrite the 
 
 - The default output target is a 2-3 minute Chinese talking-head script.
 - For Xiaohongshu links, the agent should attempt at least three real extraction methods before asking the user to paste subtitles.
+- When an extracted transcript or SRT exists, include a structured source-script treatment in source order, even when the user asks to directly rewrite.
+- Complete results should be saved to `内容/` by default unless the user explicitly says not to archive.
 - Do not reproduce long third-party transcripts verbatim; summarize in source order and quote only short hook or logic lines when needed.
 - This skill is for script transformation first. It does not default to video production, editing, captioning, or export unless the user asks.
 
