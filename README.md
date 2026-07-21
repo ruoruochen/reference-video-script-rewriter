@@ -25,7 +25,7 @@ The workflow:
    - Chinese/source SRT subtitle download and duplicate comparison;
    - video download/transcription paths such as ChatCut when public media URLs are exposed;
    - command-line metadata tools such as `yt-dlp --dump-json` when installed.
-3. Provides a structured paraphrase of long third-party transcripts, with only short key excerpts when useful.
+3. Provides a structured paraphrase of long third-party transcripts, plus a complete source-order oral-script sequence note that covers every spoken segment without copying the transcript verbatim.
 4. Uses the user's own viewpoint when supplied.
 5. Rewrites the script in conversational Chinese with short, speakable sentences.
 6. Outputs title and cover ideas plus the final script.
@@ -61,6 +61,7 @@ Extract the original transcript if possible, keep the opening hook, rewrite the 
 - The default output target is a 2-3 minute Chinese talking-head script.
 - For Xiaohongshu links, the agent should attempt at least three real extraction methods before asking the user to paste subtitles.
 - When an extracted transcript or SRT exists, include a structured source-script treatment in source order, even when the user asks to directly rewrite.
+- Archives should also include `完整原视频口播顺序整理稿（非逐字稿）`: a full-coverage, source-order cleaned summary of the original oral script and pacing.
 - Complete results should be saved to `内容/` by default unless the user explicitly says not to archive.
 - Do not reproduce long third-party transcripts verbatim; summarize in source order and quote only short hook or logic lines when needed.
 - This skill is for script transformation first. It does not default to video production, editing, captioning, or export unless the user asks.

@@ -27,6 +27,7 @@ Default output target: 2-3 minute Chinese口播稿, unless the user requests ano
 2. Output the source script responsibly.
    - For long third-party transcripts, do not reproduce the entire source verbatim.
    - Always provide a structured source-script treatment in source order when a transcript or SRT was extracted. Include the reference's pacing, section sequence, hook logic, and key claims, even if the user asks to "directly rewrite".
+   - When archiving an extracted transcript/SRT, also save a complete source oral-script sequence note: a full-coverage, source-order cleaned summary of every spoken segment and transition, labeled as not a verbatim transcript. This should preserve all information points and pacing cues without copying the entire third-party transcript word-for-word.
    - Include only a few short key original lines that are useful for preserving the hook and title logic.
    - Make clear when the source is paraphrased rather than exact transcript.
 
@@ -57,6 +58,7 @@ Default output target: 2-3 minute Chinese口播稿, unless the user requests ano
      - `## 标题与封面`
      - `## 逐字稿`
      - `## 参考视频链接和提取出来的文案`
+     - Within the reference section, include both `原视频文案结构化处理` and `完整原视频口播顺序整理稿（非逐字稿）` when a transcript/SRT was extracted.
      - `## 我的原始想法`
 
 ## Default Output Shape
