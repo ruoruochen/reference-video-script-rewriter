@@ -1,72 +1,69 @@
 # Reference Video Script Rewriter
 
-把中文对标短视频链接、原视频转写稿或参考文案，转化成适合自媒体发布的原创口播逐字稿。
+Reference Video Script Rewriter turns a Chinese reference short-video link, transcript, or draft into a publish-ready self-media spoken script. It focuses on extracting the reference structure, preserving strong hook logic, rewriting examples, adding the user's viewpoint, and producing a concise Chinese talking-head draft with title and cover ideas.
 
-## 适合什么时候用
+## When to Use
 
-当你想按“对标视频文稿流程”处理一个参考视频或参考文案时使用：
+Use this skill when you want to:
 
-- 获取原视频稿或参考文案结构
-- 结构化转述原稿
-- 保留原文开头的强痛点和吸引力
-- 加入自己的观点和例子
-- 改写成 2-3 分钟中文口播稿
-- 生成标题、封面文案和归档文件
+- Extract a reference video's metadata, transcript, or structure.
+- Paraphrase a reference script responsibly instead of copying it.
+- Preserve a strong opening hook while rewriting the body.
+- Add your own angle, examples, framework, or observations.
+- Generate a 2-3 minute Chinese spoken script.
+- Produce title options, cover text, and an optional archive file.
 
-## 输入
+## What It Does
 
-可以提供以下任意一种材料：
+The workflow:
 
-- 对标视频链接
-- 原视频字幕或转写稿
-- 参考文案
-- 自己的原始想法、观点框架或替换例子
+1. Collects the reference source, including title, author, tags, stats, description, video URL, and transcript when available.
+2. For Xiaohongshu links, tries multiple extraction methods before asking for pasted subtitles:
+   - visible page or web cache/search;
+   - direct HTML fetch and embedded state inspection;
+   - `noteDetailMap`, `mediaV2`, `subtitles`, `masterUrl`, `backupUrls`, `desc`, `title`, `nickname`, `tagList`, and interaction count extraction;
+   - Chinese/source SRT subtitle download and duplicate comparison;
+   - video download/transcription paths such as ChatCut when public media URLs are exposed;
+   - command-line metadata tools such as `yt-dlp --dump-json` when installed.
+3. Provides a structured paraphrase of long third-party transcripts, with only short key excerpts when useful.
+4. Uses the user's own viewpoint when supplied.
+5. Rewrites the script in conversational Chinese with short, speakable sentences.
+6. Outputs title and cover ideas plus the final script.
+7. Archives the result to `内容/` when requested.
 
-## 默认流程
+## Installation
 
-1. 提取参考视频信息：标题、作者、标签、互动数据、正文或公开视频地址。
-2. 获取原视频稿：能直接读取就读取；能转写公开视频就转写；否则请用户粘贴字幕。
-3. 输出原稿：长文不全文照搬，改为结构化转述，并保留少量关键原句短摘。
-4. 接收用户观点：保留用户的方法命名、个人观察和替换案例。
-5. 改写文稿：保留参考开头的痛点逻辑，重写例子，避免与原稿完全一致。
-6. 生成结果：标题与封面、逐字稿、参考视频链接和提取文案、用户原始想法。
-7. 如需归档，保存到 `内容/` 文件夹。
-
-## 输出结构
-
-归档文件默认使用：
-
-```text
-内容/YYYY-MM-DD_HHMM_帖子标题.md
-```
-
-文件结构：
-
-```markdown
-# 帖子标题
-
-## 标题与封面
-
-## 逐字稿
-
-## 参考视频链接和提取出来的文案
-
-## 我的原始想法
-```
-
-## 示例提示
+Place the skill folder at:
 
 ```text
-根据这个小红书对标视频链接，按我的自媒体文稿流程处理：
-1. 获取原视频稿
-2. 输出结构化转述
-3. 我会补充自己的观点
-4. 帮我改写例子并生成逐字稿、标题和封面
-5. 最后归档到内容文件夹
+~/.codex/skills/reference-video-script-rewriter
 ```
 
-## 注意事项
+The repository root should contain:
 
-- 初期重点是纯文稿转述和例子改写，不默认进入录制、剪辑、字幕、导出视频流程。
-- 对第三方长视频文案，不完整复制全文；使用结构化转述和少量短句摘录。
-- 如果用户已确定标题或封面文案，不要重新打开选择，直接采用。
+```text
+SKILL.md
+README.md
+README.zh-CN.md
+ITERATIONS.md
+agents/openai.yaml
+```
+
+## Example Prompt
+
+```text
+Use reference-video-script-rewriter on this Xiaohongshu reference video.
+Extract the original transcript if possible, keep the opening hook, rewrite the examples so it is not identical, and output title/cover ideas plus a Chinese spoken script.
+```
+
+## Important Notes
+
+- The default output target is a 2-3 minute Chinese talking-head script.
+- For Xiaohongshu links, the agent should attempt at least three real extraction methods before asking the user to paste subtitles.
+- Do not reproduce long third-party transcripts verbatim; summarize in source order and quote only short hook or logic lines when needed.
+- This skill is for script transformation first. It does not default to video production, editing, captioning, or export unless the user asks.
+
+## Related Docs
+
+- [中文说明](README.zh-CN.md)
+- [迭代记录](ITERATIONS.md)

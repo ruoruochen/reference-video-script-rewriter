@@ -15,8 +15,14 @@ Default output target: 2-3 minute Chinese口播稿, unless the user requests ano
 
 1. Get the reference source.
    - If the user provides a link, try to open it and extract visible metadata: title, author, tags, stats, description, and public media URL.
+   - For Xiaohongshu links, do not give up after the visible page fails. Try at least three extraction methods before asking the user to paste subtitles:
+     1. Open the page normally or through web search/cache to collect visible metadata and any description text.
+     2. Fetch the page HTML directly with network access when needed, then search embedded JSON/state for `noteDetailMap`, `mediaV2`, `subtitles`, `masterUrl`, `backupUrls`, `desc`, `title`, `nickname`, `tagList`, and interaction counts.
+     3. If embedded `subtitles` contains SRT URLs, download the Chinese/source SRT files, compare duplicates when multiple versions exist, and use the SRT as the source transcript.
+     4. If no subtitles are exposed but a `masterUrl` or public video URL is exposed, use a downloader/transcription path such as ChatCut import/transcription when available.
+     5. Try command-line/video metadata tools such as `yt-dlp --dump-json` if installed; treat missing tools as one failed method, not as overall extraction failure.
    - If the page exposes a public video URL and ChatCut transcription tools are available, import only that selected video into a project and wait for transcription.
-   - If automatic extraction fails, ask the user to paste subtitles or the reference copy.
+   - If automatic extraction still fails after at least three real methods, explain which methods failed and ask the user to paste subtitles or the reference copy.
 
 2. Output the source script responsibly.
    - For long third-party transcripts, do not reproduce the entire source verbatim.
